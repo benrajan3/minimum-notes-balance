@@ -44,3 +44,13 @@ The least amount of notes: [5, 1, 1]
 
 ## Dependencies
 Python 3.x
+
+## Credits
+This program is created by Benjamin Rajan.
+Contact me on LinkedIn: https://www.linkedin.com/in/benjamin-cw-rajan/ 
+
+## About Me
+I am an enthusiastic and passion-driven Python back-end developer that creates efficient and practical solutions. My background is Bachelor's of Computer Science, major in Data Science graduated from Monash University Malaysia. I enjoy developing business solutions for clients and creating Python scripts to gain insights on the current data and generate missing data. In the future, I would like to incorporate artificial intelligence and machine learning into business solutions in order to reduce the manual workload of humans. If you have any questions, feel free to connect and message me on LinkedIn.
+
+## Feedback
+Feedback is valuable to me as I am still learning! If you have any suggestions, improvements or encounter any issues, feel free to reach out to benjaminrajan20@gmail.com 
