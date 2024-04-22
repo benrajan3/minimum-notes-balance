@@ -13,23 +13,47 @@ Time Complexity:
 - Worst Case: O(n) where n is the note value in the list
 """
 
-available_notes = [[100,0],[50,2],[20,5],[10,5],[5,5],[1,5]]
+available_notes = [[100,0],[50,0],[20,5],[10,2],[5,7],[1,20]]
 drinks_dict = {
-    1: 12,
-    2: 15,
-    3: 20
+    1: 15,
+    2: 20,
+    3: 25
 }
 
+drinks_name = {
+    1: "Coca Cola",
+    2: "Nescafe",
+    3: "Milo"
+}
+
+drinks_quantity = {
+    1: 2,
+    2: 1,
+    3: 1
+}
+ 
 def main(drinks):
-    print("Here are the drink choices \n1. Coca Cola - RM 12.00\n2. Nescafe - RM 15.00\n3. Milo - RM 20.00")
-    customer_option = int(input("What is your drink of choice? Please enter the number:\n"))
+    total_drink_price = 0
+    while True:
+        print("Here are the drink choices \n1. Coca Cola - RM 15.00\n2. Nescafe - RM 20.00\n3. Milo - RM 25.00")
+        customer_option = int(input("What is your drink of choice? Please enter the number:\n"))
+        if drinks_quantity[customer_option] <= 0:
+            drink_name = drinks_name[customer_option]
+            print(f"{drink_name} is no longer available!")
+        else:
+            drinks_quantity[customer_option] -= 1
+            
+            total_drink_price += drinks[customer_option]
+        end_prompt = str(input("Do you want to order anything else? Yes or No:\n"))
+        if end_prompt == "No":
+            break
     try:
-        drink_price = drinks[customer_option]
-        customer_payment = int(input(f"Please pay a total of RM {drink_price}.00\n"))
-        customer_balance = customer_payment - drink_price
+        # drink_price = drinks[customer_option]
+        customer_payment = int(input(f"Please pay a total of RM {total_drink_price}.00\n"))
+        customer_balance = customer_payment - total_drink_price
         print(f"The balance returned to the customer is: RM {customer_balance}.00")
-        optimal_customer_balance = balance_change(customer_balance, available_notes)
-        return f"The least amount of notes: {optimal_customer_balance}"
+        optimal_customer_balance, current_available_notes = balance_change(customer_balance, available_notes)
+        return f"The least amount of notes: {optimal_customer_balance}. The current available notes in the vending machine is {current_available_notes}"
     except KeyError:    # handle error in case of customer choosing other options
         return "The choice you have entered is invalid. Please try again!"
     
@@ -68,7 +92,7 @@ def balance_change(expected_balance, vending_notes):
                 assert IndexError   
             i += 1  # check the next index if the current note value is too large which has exceeded the expected balance
         
-    return balance_notes
+    return balance_notes, vending_notes
 
 
 print(main(drinks_dict))
